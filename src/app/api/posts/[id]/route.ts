@@ -84,7 +84,7 @@ export async function PUT(
     { returnDocument: "after" }
   );
 
-  if (!updateResult.value) {
+  if (!updateResult || !updateResult.value) {
     return NextResponse.json({ error: "Post não encontrado." }, { status: 404 });
   }
 
