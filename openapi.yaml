@@ -1,0 +1,187 @@
+openapi: 3.0.3
+info:
+  title: Blog / Fórum API
+  version: 1.0.0
+  description: |
+    Documentação dos endpoints CRUD para posts de blog/fórum usando Next.js, TypeScript e MongoDB.
+servers:
+  - url: http://localhost:3000
+paths:
+  /api/posts:
+    get:
+      tags:
+        - Posts
+      summary: Listar posts
+      description: Retorna todos os posts ordenados por data de criação decrescente.
+      responses:
+        '200':
+          description: Lista de posts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Post'
+    post:
+      tags:
+        - Posts
+      summary: Criar novo post
+      description: Cria um novo post de blog ou fórum.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostInput'
+            example:
+              title: Meu primeiro post
+              content: Conteúdo do post.
+              author: João
+      responses:
+        '201':
+          description: Post criado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+        '400':
+          description: Requisição inválida
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /api/posts/{id}:
+    parameters:
+      - name: id
+        in: path
+        description: ID do post (MongoDB ObjectId)
+        required: true
+        schema:
+          type: string
+    get:
+      tags:
+        - Posts
+      summary: Buscar post por ID
+      description: Retorna um post específico pelo seu identificador.
+      responses:
+        '200':
+          description: Post encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+        '400':
+          description: ID inválido
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Post não encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      tags:
+        - Posts
+      summary: Atualizar post
+      description: Atualiza os campos title, content e author de um post existente.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostInput'
+            example:
+              title: Título atualizado
+              content: Texto atualizado do post.
+              author: Maria
+      responses:
+        '200':
+          description: Post atualizado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+        '400':
+          description: Requisição inválida
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Post não encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      tags:
+        - Posts
+      summary: Excluir post
+      description: Remove um post existente pelo seu identificador.
+      responses:
+        '204':
+          description: Post excluído com sucesso
+        '400':
+          description: ID inválido
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Post não encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    Post:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Identificador único do post.
+        title:
+          type: string
+        content:
+          type: string
+        author:
+          type: string
+          nullable: true
+        createdAt:
+          type: string
+          format: date-time
+          description: Data de criação em ISO 8601.
+        updatedAt:
+          type: string
+          format: date-time
+          description: Data da última atualização em ISO 8601.
+      required:
+        - id
+        - title
+        - content
+        - createdAt
+        - updatedAt
+    PostInput:
+      type: object
+      properties:
+        title:
+          type: string
+        content:
+          type: string
+        author:
+          type: string
+          nullable: true
+      required:
+        - title
+        - content
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+        - error
