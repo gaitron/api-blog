@@ -71,24 +71,28 @@ export async function PUT(
   const db = await connectMongo();
   const now = new Date().toISOString();
 
+  const setData: Record<string, any> = {
+    title,
+    content,
+    updatedAt: now,
+  };
+
+  // Only include author if it's defined (provided by user)
+  if (author !== undefined) {
+    setData.author = author;
+  }
+
   const updateResult = await db.collection("posts").findOneAndUpdate(
     { _id: new ObjectId(id) },
-    {
-      $set: {
-        title,
-        content,
-        author,
-        updatedAt: now,
-      },
-    },
+    { $set: setData },
     { returnDocument: "after" }
   );
 
-  if (!updateResult || !updateResult.value) {
+  if (!updateResult) {
     return NextResponse.json({ error: "Post não encontrado." }, { status: 404 });
   }
 
-  return NextResponse.json(await formatPost(updateResult.value));
+  return NextResponse.json(await formatPost(updateResult));
 }
 
 export async function DELETE(
