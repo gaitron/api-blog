@@ -71,9 +71,13 @@ npm run dev
 
 ## Arquivos de documentação
 
-- `openapi.yaml` — especificação OpenAPI 3.0 para os quatro endpoints CRUD.
-- `docs/api.md` — documentação detalhada com exemplos de requisições.
+- `src/app/api/openapi/route.ts` — rota que serve o OpenAPI dinamicamente com o servidor URL correto.
 - `src/app/docs/page.tsx` — página Swagger UI disponível em `/docs`.
+- `docs/api.md` — documentação detalhada com exemplos de requisições.
+
+## Documentação dinâmica
+
+O endpoint `/api/openapi` sirve a especificação OpenAPI com o servidor URL detectado automaticamente baseado no `host` e `x-forwarded-proto` headers. Isso permite que a mesma aplicação funcione em localhost, desenvolvimento, staging e produção sem necessidade de configuração adicional.
 
 ## Exemplo de requisição `POST`
 

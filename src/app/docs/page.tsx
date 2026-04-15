@@ -19,7 +19,7 @@ export default function DocsPage() {
       const SwaggerUIStandalonePreset = (presetModule as any).default ?? presetModule;
 
       ui = SwaggerUIBundle({
-        url: "/openapi.yaml",
+        url: "/api/openapi",
         domNode: swaggerContainer.current,
         presets: [SwaggerUIBundle.presets.apis, SwaggerUIStandalonePreset],
         layout: "BaseLayout",
