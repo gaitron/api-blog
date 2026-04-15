@@ -1,8 +1,19 @@
-# API Blog / Fórum com Next.js, TypeScript e MongoDB
+# Blog API - REST CRUD API for Blog/Forum
 
-Projeto com CRUD completo para posts de blog/forum usando a API `app/api/posts`.
+A complete REST CRUD API for blog/forum posts built with Next.js, TypeScript, and MongoDB. Features full documentation with Swagger UI.
 
-## Como usar
+## Features
+
+- ✅ Complete CRUD operations (Create, Read, Update, Delete)
+- ✅ RESTful API design
+- ✅ TypeScript for type safety
+- ✅ MongoDB database integration
+- ✅ Interactive API documentation with Swagger UI
+- ✅ Next.js App Router
+- ✅ Tailwind CSS for styling
+- ✅ Production-ready with dynamic OpenAPI spec
+
+## Quick Start
 
 1. Instale dependências:
 

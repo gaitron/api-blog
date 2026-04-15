@@ -1,7 +1,30 @@
 {
   "name": "api-blog",
   "version": "0.1.0",
+  "description": "A complete REST CRUD API for blog/forum posts built with Next.js, TypeScript, and MongoDB",
+  "main": "index.js",
+  "author": "Blog API Team",
+  "license": "MIT",
   "private": true,
+  "keywords": [
+    "blog",
+    "forum",
+    "api",
+    "rest",
+    "crud",
+    "nextjs",
+    "typescript",
+    "mongodb",
+    "swagger"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gaitron/api-blog.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gaitron/api-blog/issues"
+  },
+  "homepage": "https://github.com/gaitron/api-blog#readme",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

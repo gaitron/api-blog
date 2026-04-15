@@ -3,13 +3,13 @@ export default function Home() {
     <main className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-800 text-white">
       <section className="mx-auto flex min-h-screen max-w-6xl flex-col justify-center gap-10 px-6 py-16 sm:px-10">
         <div className="space-y-6">
-          <p className="text-sm uppercase tracking-[0.3em] text-cyan-300/80">API REST Blog / Fórum</p>
+          <p className="text-sm uppercase tracking-[0.3em] text-cyan-300/80">Blog API</p>
           <h1 className="text-4xl font-semibold leading-tight sm:text-6xl">
-            Plataforma de posts com Next.js, TypeScript e MongoDB
+            REST CRUD API for Blog/Forum
           </h1>
           <p className="max-w-3xl text-lg leading-8 text-slate-300">
-            Uma aplicação leve com API CRUD completa para criar, listar, editar e apagar posts de blog ou fórum.
-            A interface de documentação Swagger permite explorar a API de forma interativa.
+            Uma API REST completa para operações CRUD em posts de blog ou fórum, construída com Next.js, TypeScript e MongoDB.
+            Inclui documentação interativa com Swagger UI para facilitar o desenvolvimento e integração.
           </p>
         </div>
 
